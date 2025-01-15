@@ -2,11 +2,28 @@
 // ===========================
 // grupos.php (SUBMÓDULO GRUPOS)
 // ===========================
-
 include_once('template/header.php');
+
+// Asegurarse de que el ID del torneo está en la sesión
+if (!isset($_SESSION['id_torneo'])) {
+    echo '<p class="alert alert-warning">No se ha seleccionado ningún torneo. Por favor selecciona uno primero.</p>';
+    exit;
+}
+
+// Obtener el ID del torneo desde la sesión
+$id_torneo = $_SESSION['id_torneo'];
+
+// Llamar al endpoint para obtener los grupos
+$url = "http://localhost/api/grupos/$id_torneo";
+$response = file_get_contents($url);
+$grupos = json_decode($response, true);
+
+// Manejar errores de la API
+if (empty($grupos)) {
+    $error = "No hay grupos disponibles para este torneo.";
+}
 ?>
 
-<!-- CONTENIDO DE SUBMÓDULO GRUPOS -->
 <div class="container mt-4">
   <h2><i class="fas fa-layer-group"></i> Submódulo Grupos</h2>
   <p class="text-muted">
@@ -58,36 +75,40 @@ include_once('template/header.php');
       <strong>Listado de Grupos</strong>
     </div>
     <div class="card-body">
-      <table class="table table-bordered">
-        <thead class="table-dark">
-          <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Ejemplo de fila. Ajusta con tu BD. -->
-          <tr>
-            <td>1</td>
-            <td>Grupo A</td>
-            <td>1era Fuerza</td>
-            <td>
-              <button class="btn btn-sm btn-success">
-                <i class="fas fa-edit"></i> Editar
-              </button>
-              <button class="btn btn-sm btn-danger">
-                <i class="fas fa-trash"></i> Eliminar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <?php if (isset($error)): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+      <?php else: ?>
+        <table class="table table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($grupos as $grupo): ?>
+              <tr>
+                <td><?= htmlspecialchars($grupo['id_grupo']) ?></td>
+                <td><?= htmlspecialchars($grupo['nombre_grupo']) ?></td>
+                <td><?= htmlspecialchars($grupo['categoria']) ?></td>
+                <td>
+                  <a href="editarGrupo.php?id=<?= $grupo['id_grupo'] ?>" class="btn btn-sm btn-success">
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                  <button class="btn btn-sm btn-danger">
+                    <i class="fas fa-trash"></i> Eliminar
+                  </button>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      <?php endif; ?>
     </div>
   </div>
 </div>
-<!-- FIN CONTENIDO GRUPOS -->
 
 <!-- FOOTER (Scripts Bootstrap) -->
 <script 

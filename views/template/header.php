@@ -1,5 +1,10 @@
 <?php
 include_once('session.php');
+
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
 ?>
 
 <!DOCTYPE html>
