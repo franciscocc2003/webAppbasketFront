@@ -163,7 +163,7 @@ if ($is_editing) {
             foreach ($usuarios as $usuario) {
                 if ($usuario['rol'] === 'Organizador') {
                     $selected = $organizador_id == $usuario['id_usuario'] ? 'selected' : '';
-                    echo "<option value=\"{$usuario['id_usuario']}\" $selected>{$usuario['nombre_completo']}</option>";
+                    echo "<option value=\"{$usuario['usuario']}\" $selected>{$usuario['nombre_completo']}</option>";
                 }
             }
             ?>
@@ -189,34 +189,42 @@ if ($is_editing) {
 
     const logotipoInput = document.getElementById("logotipo");
     const logotipoFile = logotipoInput.files[0];
-
     const reader = new FileReader();
+
     reader.onload = function () {
       const logotipoBase64 = logotipoFile ? reader.result.split(",")[1] : "<?= $logotipo ?>";
 
       const data = {
-        nombre_torneo: document.getElementById("nombre_torneo").value,
+        nombre_torneo: document.getElementById("nombre_torneo").value.trim(),
         logotipo: logotipoBase64, // Enviar en Base64
-        sede: document.getElementById("sede").value,
-        patrocinadores: document.getElementById("patrocinadores").value,
-        premio_1er_lugar: document.getElementById("premio_1er_lugar").value,
-        premio_2do_lugar: document.getElementById("premio_2do_lugar").value,
-        premio_3er_lugar: document.getElementById("premio_3er_lugar").value,
-        otro_premio: document.getElementById("otro_premio").value,
-        id_organizador: document.getElementById("organizador_id").value
+        sede: document.getElementById("sede").value.trim(),
+        patrocinadores: document.getElementById("patrocinadores").value.trim(),
+        premio_1er_lugar: document.getElementById("premio_1er_lugar").value.trim(),
+        premio_2do_lugar: document.getElementById("premio_2do_lugar").value.trim(),
+        premio_3er_lugar: document.getElementById("premio_3er_lugar").value.trim(),
+        otro_premio: document.getElementById("otro_premio").value.trim(),
+        usuario: document.getElementById("organizador_id").value.trim()
       };
 
-      const url = 'http://localhost/api/torneos' + (<?= $is_editing ? "'/$id_torneo'" : '' ?>);
-      const method = <?= $is_editing ? "'PUT'" : "'POST'" ?>;
+      // Construcción de la URL y método
+      const baseUrl = 'http://localhost/api/torneos';
+      const isEditing = <?= json_encode($is_editing) ?>;
+      const url = isEditing ? `${baseUrl}/<?= $id_torneo ?>` : baseUrl;
+      const method = isEditing ? 'PUT' : 'POST';
 
       fetch(url, {
         method: method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       })
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error en la solicitud. Código de estado: ' + response.status);
+          }
+          return response.json();
+        })
         .then(result => {
-          alert('Torneo ' + (<?= $is_editing ? "'actualizado'" : "'creado'" ?>) + ' con éxito');
+          alert(`Torneo ${isEditing ? 'actualizado' : 'creado'} con éxito`);
           window.location.href = 'crearTorneo.php';
         })
         .catch(error => alert('Error: ' + error.message));
@@ -229,6 +237,7 @@ if ($is_editing) {
     }
   });
 </script>
+
 
 <?php
 include_once('template/footer.php');
