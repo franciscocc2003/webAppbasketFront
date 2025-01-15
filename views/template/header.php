@@ -92,6 +92,11 @@ include_once('session.php');
               </a>
             </li>
             <li>
+              <a class="dropdown-item" href="listadoTorneos.php">
+                <i class="fa-solid fa-list"></i> Listar torneos
+              </a>
+            </li>
+            <li>
               <a class="dropdown-item" href="grupos.php">
                 <i class="fas fa-layer-group"></i> Submódulo Grupos
               </a>
