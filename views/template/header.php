@@ -1,7 +1,5 @@
 <?php
-include_once('session.php')
-
-// HOLA COMENTARIO
+include_once('session.php');
 ?>
 
 <!DOCTYPE html>

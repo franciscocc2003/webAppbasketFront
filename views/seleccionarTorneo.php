@@ -1,7 +1,6 @@
 <?php
 // seleccionar_torneo.php
 include_once('template/header.php');
-//include_once('session.php'); // Incluye la configuración de la sesión
 
 // Obtener el rol del usuario desde la sesión
 $rol = $_SESSION['rol'];
@@ -33,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['nombre_torneo'] = $nombre_torneo;
 
     // Redirigir al inicio o a otra página
-    //header('Location: index.php');
+    echo '<script>window.location.href = "index.php";</script>';
     exit;
 }
 ?>
@@ -78,31 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   document.getElementById('id_torneo').addEventListener('change', function () {
     const selectedOption = this.options[this.selectedIndex];
     document.getElementById('nombre_torneo').value = selectedOption.getAttribute('data-nombre');
-
-    // Enviar automáticamente el formulario al cambiar la selección
-    const form = document.getElementById('formTorneo');
-    const formData = new FormData(form);
-
-    fetch('', {
-      method: 'POST',
-      body: formData
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error al seleccionar el torneo');
-        }
-        // Redirigir a index.php después de la selección
-        window.location.href = 'index.php';
-      })
-      .catch(error => {
-        alert('Hubo un error al seleccionar el torneo: ' + error.message);
-      });
   });
 
   // Preseleccionar el nombre al cargar la página
   document.getElementById('id_torneo').dispatchEvent(new Event('change'));
 </script>
-
 
 
 <script 
