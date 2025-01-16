@@ -58,76 +58,91 @@ foreach ($grupos as $grupo) {
 
   <!-- Formulario: Registrar Jugador -->
   <div class="card mb-4">
-    <div class="card-header bg-warning text-dark">
-      <strong>Registrar Nuevo Jugador</strong>
+    <div class="card-header bg-warning text-dark text-center">
+        <h4>Registrar Nuevo Jugador</h4>
     </div>
-    <div class="card-body">
-      <form id="formJugador">
-        <div class="mb-3">
-          <label for="equipo" class="form-label">Equipo</label>
-          <select class="form-select" id="equipo" name="equipo" required>
-            <option selected disabled>-- Selecciona Equipo --</option>
-            <?php foreach ($equiposPorGrupo as $grupo => $equipos): ?>
-              <?php if (empty($equipos)): ?>
-                <optgroup label="<?= htmlspecialchars($grupo) ?>">No hay equipos disponibles</optgroup>
-              <?php else: ?>
-                <optgroup label="<?= htmlspecialchars($grupo) ?>">
-                  <?php foreach ($equipos as $equipo): ?>
-                    <option value="<?= $equipo['id_equipo'] ?>">
-                      <?= htmlspecialchars($equipo['nombre_equipo']) ?>
-                    </option>
-                  <?php endforeach; ?>
-                </optgroup>
-              <?php endif; ?>
-            <?php endforeach; ?>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="nombreJugador" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombreJugador" name="nombreJugador" required>
-        </div>
-        <div class="mb-3">
-          <label for="apellidosJugador" class="form-label">Apellidos</label>
-          <input type="text" class="form-control" id="apellidosJugador" name="apellidosJugador" required>
-        </div>
-        <div class="mb-3">
-          <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-          <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
-        </div>
-        <div class="mb-3">
-          <label for="correoJugador" class="form-label">Correo</label>
-          <input type="email" class="form-control" id="correoJugador" name="correoJugador">
-        </div>
-        <div class="mb-3">
-          <label for="celularJugador" class="form-label">Celular</label>
-          <input type="tel" class="form-control" id="celularJugador" name="celularJugador" pattern="[0-9]{10}">
-        </div>
-        <div class="mb-3">
-          <label for="tipoSangre" class="form-label">Tipo de Sangre</label>
-          <select class="form-select" id="tipoSangre" name="tipoSangre">
-            <option selected disabled>-- Selecciona Tipo de Sangre --</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="contactoEmergencia" class="form-label">Contacto de Emergencia</label>
-          <input type="text" class="form-control" id="contactoEmergencia" name="contactoEmergencia">
-        </div>
-        <div class="mb-3">
-          <label for="fotoJugador" class="form-label">Fotografía</label>
-          <input type="file" class="form-control" id="fotoJugador" name="fotoJugador" accept="image/*">
-        </div>
-        <button type="submit" class="btn btn-primary">
-          <i class="fas fa-save"></i> Guardar Jugador
-        </button>
-      </form>
+    <div class="card-body p-4">
+        <form id="formJugador">
+            <div class="row g-4">
+                <!-- Equipo -->
+                <div class="col-md-12">
+                    <label for="equipo" class="form-label">Equipo</label>
+                    <select class="form-select" id="equipo" name="equipo" required>
+                        <option selected disabled>-- Selecciona Equipo --</option>
+                        <?php foreach ($equiposPorGrupo as $grupo => $equipos): ?>
+                            <?php if (empty($equipos)): ?>
+                                <optgroup label="<?= htmlspecialchars($grupo) ?>">No hay equipos disponibles</optgroup>
+                            <?php else: ?>
+                                <optgroup label="<?= htmlspecialchars($grupo) ?>">
+                                    <?php foreach ($equipos as $equipo): ?>
+                                        <option value="<?= $equipo['id_equipo'] ?>">
+                                            <?= htmlspecialchars($equipo['nombre_equipo']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </optgroup>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <!-- Nombre y Apellidos -->
+                <div class="col-md-6">
+                    <label for="nombreJugador" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombreJugador" name="nombreJugador" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="apellidosJugador" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidosJugador" name="apellidosJugador" required>
+                </div>
+
+                <!-- Fecha de Nacimiento -->
+                <div class="col-md-6">
+                    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="correoJugador" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="correoJugador" name="correoJugador">
+                </div>
+
+                <!-- Celular y Tipo de Sangre -->
+                <div class="col-md-4">
+                    <label for="celularJugador" class="form-label">Celular</label>
+                    <input type="tel" class="form-control" id="celularJugador" name="celularJugador" pattern="[0-9]{10}">
+                </div>
+                <div class="col-md-4">
+                    <label for="contactoEmergencia" class="form-label">Contacto de Emergencia</label>
+                    <input type="text" class="form-control" id="contactoEmergencia" name="contactoEmergencia">
+                </div>
+                <div class="col-md-4">
+                    <label for="tipoSangre" class="form-label">Tipo de Sangre</label>
+                    <select class="form-select" id="tipoSangre" name="tipoSangre">
+                        <option selected disabled>-- Selecciona Tipo de Sangre --</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                
+                <!-- Fotografía -->
+                <div class="col-md-12">
+                    <label for="fotoJugador" class="form-label">Fotografía</label>
+                    <input type="file" class="form-control" id="fotoJugador" name="fotoJugador" accept="image/*">
+                </div>
+            </div>
+
+            <!-- Botón de Guardar -->
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fas fa-save"></i> Guardar Jugador
+                </button>
+            </div>
+        </form>
     </div>
   </div>
 
