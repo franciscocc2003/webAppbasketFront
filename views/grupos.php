@@ -36,7 +36,7 @@ if (empty($grupos)) {
       <strong>Crear un Nuevo Grupo</strong>
     </div>
     <div class="card-body">
-      <form action="#" method="POST">
+      <form id="formGrupo">
         <div class="mb-3">
           <label for="nombreGrupo" class="form-label">Nombre del Grupo</label>
           <input 
@@ -84,7 +84,7 @@ if (empty($grupos)) {
               <th>#</th>
               <th>Nombre</th>
               <th>Categoría</th>
-              <th>Acciones</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -93,14 +93,6 @@ if (empty($grupos)) {
                 <td><?= htmlspecialchars($grupo['id_grupo']) ?></td>
                 <td><?= htmlspecialchars($grupo['nombre_grupo']) ?></td>
                 <td><?= htmlspecialchars($grupo['categoria']) ?></td>
-                <td>
-                  <a href="editarGrupo.php?id=<?= $grupo['id_grupo'] ?>" class="btn btn-sm btn-success">
-                    <i class="fas fa-edit"></i> Editar
-                  </a>
-                  <button class="btn btn-sm btn-danger">
-                    <i class="fas fa-trash"></i> Eliminar
-                  </button>
-                </td>
               </tr>
             <?php endforeach; ?>
           </tbody>
@@ -109,6 +101,44 @@ if (empty($grupos)) {
     </div>
   </div>
 </div>
+
+<!-- SCRIPT: Enviar formulario a la API -->
+<script>
+  document.getElementById('formGrupo').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const idTorneo = <?= json_encode($id_torneo) ?>;
+    const nombreGrupo = document.getElementById('nombreGrupo').value;
+    const categoria = document.getElementById('categoria').value;
+
+    const data = {
+      nombre_grupo: nombreGrupo,
+      categoria: categoria
+    };
+
+    fetch(`http://localhost/api/grupos/asignacion/${idTorneo}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Grupo creado con éxito');
+        window.location.reload();
+      } else {
+        response.json().then(err => {
+          alert(`Error: ${err.message}`);
+        });
+      }
+    })
+    .catch(error => {
+      console.error('Error al crear grupo:', error);
+      alert('Error al crear el grupo.');
+    });
+  });
+</script>
 
 <!-- FOOTER (Scripts Bootstrap) -->
 <script 
