@@ -104,7 +104,17 @@ foreach ($grupos as $grupo) {
         </div>
         <div class="mb-3">
           <label for="tipoSangre" class="form-label">Tipo de Sangre</label>
-          <input type="text" class="form-control" id="tipoSangre" name="tipoSangre">
+          <select class="form-select" id="tipoSangre" name="tipoSangre">
+            <option selected disabled>-- Selecciona Tipo de Sangre --</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+          </select>
         </div>
         <div class="mb-3">
           <label for="contactoEmergencia" class="form-label">Contacto de Emergencia</label>
