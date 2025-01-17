@@ -3,9 +3,9 @@
 class dataBase{
 
     private $host = "practicas.fimaz.uas.edu.mx";
-    private $db = "lisi4119_PFinal";
-    private $user = "lisi4119";
-    private $password = "lisi4119";
+    private $db_name = "lisi4117_final";
+    private $username = "lisi4117";
+    private $password = "lisi4117";
 
     public function __construct() {
         

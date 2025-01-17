@@ -1,12 +1,7 @@
 <?php
 // estadisticas_de_jugadores.php
 include_once('template/header.php');
-
-
-
 ?>
-
-
 
 <div class="container mt-4">
   <div class="card shadow-sm">
@@ -33,35 +28,10 @@ include_once('template/header.php');
               <th>Faltas Cometidas</th>
             </tr>
           </thead>
-          <tbody>
-            <?php if (!empty($estadisticas)): ?>
-              <?php foreach ($estadisticas as $jugador): ?>
-                <tr>
-                  <!-- Foto del jugador (si existe) -->
-                  <td class="text-center">
-                    <?php if (!empty($jugador['foto'])): ?>
-                      <img 
-                        src="imagenes_jugadores/<?php echo $jugador['foto']; ?>" 
-                        alt="Foto de <?php echo $jugador['nombre_jugador']; ?>" 
-                        style="width: 50px; height: 50px; object-fit: cover;"
-                      >
-                    <?php else: ?>
-                      <i class="fas fa-user fa-2x text-secondary"></i>
-                    <?php endif; ?>
-                  </td>
-                  <td><?php echo $jugador['nombre_jugador']; ?></td>
-                  <td><?php echo $jugador['total_puntos']; ?></td>
-                  <td><?php echo $jugador['total_triples']; ?></td>
-                  <td><?php echo $jugador['total_faltas']; ?></td>
-                </tr>
-              <?php endforeach; ?>
-            <?php else: ?>
-              <tr>
-                <td colspan="5" class="text-center">
-                  No hay registros de estadísticas para mostrar.
-                </td>
-              </tr>
-            <?php endif; ?>
+          <tbody id="estadisticas-jugadores-body">
+            <tr>
+              <td colspan="5" class="text-center">Cargando datos...</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -80,6 +50,47 @@ include_once('template/header.php');
 <script 
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 ></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const baseUrl = "http://localhost/api/"; // Cambia la URL si es necesario
+    const idTorneo = <?= $_SESSION['id_torneo']; ?>; // ID del torneo de la sesión
+
+    fetch(`${baseUrl}estadisticas/jugadores/${idTorneo}`)
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.getElementById("estadisticas-jugadores-body");
+        tbody.innerHTML = ""; // Limpiar la tabla
+
+        if (data.length > 0) {
+          data.forEach(jugador => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+            <td class="text-center">
+                            ${
+                                jugador.foto
+                                    ? `<img src="data:image/jpeg;base64,${jugador.foto}" alt="Foto de ${jugador.nombre_jugador}" style="width: 50px; height: 50px; object-fit: cover;">`
+                                    : '<i class="fas fa-user fa-2x text-secondary"></i>'
+                            }
+                        </td>
+              <td>${jugador.nombre_jugador}</td>
+              <td>${jugador.total_puntos}</td>
+              <td>${jugador.total_triples}</td>
+              <td>${jugador.total_faltas}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        } else {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td colspan="5" class="text-center">No hay registros de estadísticas para mostrar.</td>`;
+          tbody.appendChild(tr);
+        }
+      })
+      .catch(error => {
+        console.error("Error al obtener estadísticas:", error);
+      });
+  });
+</script>
 
 <?php
 include_once('template/footer.php');
