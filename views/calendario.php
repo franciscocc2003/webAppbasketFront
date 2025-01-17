@@ -121,9 +121,14 @@ $juegos = json_decode($responseJuegos, true) ?? [];
 
   <!-- Listado de Juegos -->
   <div class="card">
-    <div class="card-header bg-warning text-dark">
-      <strong>Juegos Programados</strong>
-    </div>
+  <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+    <strong>Juegos Programados</strong>
+    <a href="http://localhost/api/calendario/pdf" 
+      class="btn btn-dark">
+      <i class="fa-solid fa-file-pdf"></i> Imprimir en pdf
+    </a>
+  </div>
+
     <div class="card-body">
     <table class="table table-bordered text-center align-middle">
   <thead class="table-dark">
@@ -154,9 +159,9 @@ $juegos = json_decode($responseJuegos, true) ?? [];
           <td><?= htmlspecialchars($juego['categoria']) ?></td>
           <td><?= htmlspecialchars($juego['tipo_juego']) ?></td>
           <td>
-            <a href="http://localhost/api/calendario/pdf/<?= htmlspecialchars($juego['id_juego']) ?>" 
+            <a href="http://localhost/interfaz/views/editarCalendario?idJuego=<?= htmlspecialchars($juego['id_juego']) ?>" 
                class="btn btn-dark mt-2">
-              <i class="fas fa-file-pdf"></i> Imprimir Calendario
+               <i class="fa-solid fa-pen-to-square"></i> Editar
             </a>
           </td>
         </tr>
