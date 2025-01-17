@@ -1,10 +1,5 @@
 <?php
-include_once('session.php');
-
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +11,7 @@ echo '</pre>';
   <link 
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
     rel="stylesheet">
- <link 
+  <link 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
     rel="stylesheet"
   >
@@ -25,9 +20,9 @@ echo '</pre>';
 
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(233, 115, 4);">
   <div class="container-fluid">
-    <a class="navbar-brand text-dark" href="index.php">
+    <a class="navbar-brand text-white" href="home.php">
       <i class="fas fa-basketball-ball me-2"></i>
       Torneo de Básquetbol
     </a>
@@ -44,24 +39,26 @@ echo '</pre>';
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <!-- Opción Inicio -->
+        <!-- Opción Inicio (Visible solo si hay sesión activa) -->
+        <?php if (isset($_SESSION['id_usuario'])): ?>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="index.php">
+          <a class="nav-link text-white" href="home.php">
             <i class="fas fa-home"></i> Inicio
           </a>
         </li>
         
-        <!-- Submenú Usuarios -->
+        <!-- Submenú Usuarios (Visible solo si rol es Administrador) -->
+        <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'Administrador'): ?>
         <li class="nav-item dropdown">
           <a 
-            class="nav-link dropdown-toggle text-dark" 
+            class="nav-link dropdown-toggle text-white" 
             href="#" 
             id="navbarDropdownUsuarios" 
             role="button" 
             data-bs-toggle="dropdown" 
             aria-expanded="false"
           >
-            <i class="fas fa-users"></i> Usuarios
+            <i class="fas fa-users"></i> Organizadores
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownUsuarios">
             <li>
@@ -77,11 +74,12 @@ echo '</pre>';
             </li>
           </ul>
         </li>
+        <?php endif; ?>
 
         <!-- Submenú Torneos -->
         <li class="nav-item dropdown">
           <a 
-            class="nav-link dropdown-toggle text-dark" 
+            class="nav-link dropdown-toggle text-white" 
             href="#" 
             id="navbarDropdownTorneo" 
             role="button" 
@@ -129,35 +127,48 @@ echo '</pre>';
           </ul>
         </li>
 
-        <!-- Estadísticas -->
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="estadisticasJugadores.php">
-            <i class="fas fa-chart-bar"></i> Estadísticas de Jugadores
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="estadisticasEquipo.php">
-            <i class="fas fa-users-cog"></i> Estadísticas del Equipo
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="usuarioJugador.php">
-            <i class="fas fa-user"></i> Usuario Jugador
-          </a>
-        </li>
-
         <!-- Selección de Torneo -->
-        <li class="nav-item ms-auto">
-          <a class="nav-link text-dark" href="seleccionarTorneo.php">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="seleccionarTorneo.php">
             <i class="fas fa-list"></i> Torneo Actual: 
             <strong>
               <?= isset($_SESSION['nombre_torneo']) ? htmlspecialchars($_SESSION['nombre_torneo']) : 'Ninguno' ?>
             </strong>
           </a>
         </li>
+        <?php endif; ?>
 
-        
+        <!-- Estadísticas (Siempre visible) -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="estadisticasJugadores.php">
+            <i class="fas fa-chart-bar"></i> Estadísticas de Jugadores
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="estadisticasEquipo.php">
+            <i class="fas fa-users-cog"></i> Estadísticas del Equipo
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="usuarioJugador.php">
+            <i class="fas fa-user"></i> Jugador
+          </a>
+        </li>
+
+        <!-- Botón Cerrar Sesión -->
+        <li class="nav-item ms-auto">
+          <a class="btn btn-danger text-white" href="logout.php">
+            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<script 
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+
+</body>
+</html>

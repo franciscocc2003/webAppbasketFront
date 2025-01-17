@@ -23,7 +23,7 @@ if (empty($torneos)) {
 
 <div class="container mt-4">
   <div class="card shadow-sm">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <h3 class="mb-0">
         <i class="fas fa-trophy me-2"></i> Lista de Torneos
       </h3>
@@ -69,7 +69,7 @@ if (empty($torneos)) {
                   </ul>
                 </td>
                 <td>
-                  <a href="crearTorneo.php?id=<?= htmlspecialchars($torneo['id_torneo']) ?>" class="btn btn-warning btn-sm">
+                  <a href="crearTorneo.php?id=<?= htmlspecialchars($torneo['id_torneo']) ?>" class="btn text-white btn-sm" style="background-color:rgb(233, 115, 4);">
                     <i class="fas fa-edit"></i> Editar
                   </a>
                 </td>

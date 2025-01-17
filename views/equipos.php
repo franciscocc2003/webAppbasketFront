@@ -38,7 +38,7 @@ if (!isset($error)) {
 
   <!-- Formulario: Registrar Equipo -->
   <div class="card mb-4">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <strong>Registrar Nuevo Equipo</strong>
     </div>
     <div class="card-body">
@@ -105,7 +105,7 @@ if (!isset($error)) {
             required
           >
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn text-white" style="background-color:rgb(233, 115, 4);">
           <i class="fas fa-save"></i> Guardar Equipo
         </button>
       </form>
@@ -114,7 +114,7 @@ if (!isset($error)) {
 
   <!-- Lista de Equipos Registrados -->
   <div class="card">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <strong>Equipos Registrados</strong>
     </div>
     <div class="card-body">

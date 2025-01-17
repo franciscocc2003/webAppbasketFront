@@ -11,7 +11,7 @@ include_once('template/header.php');
 
   <!-- SECCIÓN 1: Seleccionar Torneo -->
   <div class="card shadow-sm mb-4">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <h4 class="mb-0">
         <i class="fas fa-basketball-ball me-2"></i> Selecciona tu Torneo
       </h4>
@@ -48,7 +48,7 @@ include_once('template/header.php');
           </select>
           
         </div>
-        <a href="index.php" class="btn btn-dark">
+        <a href="home.php" class="btn text-white" style="background-color:rgb(233, 115, 4);">
        <i class="fas fa-arrow-left"></i> Regresar al Inicio
         </a>
       </form>

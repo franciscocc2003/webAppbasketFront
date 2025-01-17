@@ -14,7 +14,7 @@ include_once('template/header.php');
   </p>
 
   <div class="card mb-4">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <strong>Capturar Resultado</strong>
     </div>
     <div class="card-body">
@@ -60,7 +60,7 @@ include_once('template/header.php');
   </div>
 
   <div class="card">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <strong>Captura de Estadísticas</strong>
     </div>
     <div class="card-body">
@@ -96,7 +96,7 @@ include_once('template/header.php');
         </tbody>
       </table>
 
-      <button type="button" id="guardarTodo" class="btn btn-primary">
+      <button type="button" id="guardarTodo" class="btn text-white" style="background-color:rgb(233, 115, 4);">
         <i class="fas fa-save"></i> Guardar Todo
       </button>
     </div>
@@ -194,3 +194,7 @@ include_once('template/header.php');
 </script>
 </body>
 </html>
+
+<?php
+include_once('template/footer.php');
+?>

@@ -28,7 +28,7 @@ if (!$datosUsuario) {
 
 <div class="container mt-4">
   <div class="card shadow-sm">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <h3 class="mb-0">
         <i class="fas fa-edit me-2"></i> Editar Usuario: <?php echo htmlspecialchars($datosUsuario['nombre_completo']); ?>
       </h3>
@@ -77,15 +77,18 @@ if (!$datosUsuario) {
 
         <!-- Rol -->
         <div class="mb-3">
-          <label for="rol" class="form-label">Rol</label>
-          <select class="form-select" id="rol" name="rol" required>
-            <option value="Administrador" <?php echo $datosUsuario['rol'] === 'Administrador' ? 'selected' : ''; ?>>Administrador</option>
-            <option value="Organizador" <?php echo $datosUsuario['rol'] === 'Organizador' ? 'selected' : ''; ?>>Organizador</option>
-          </select>
+        <input 
+            type="hidden" 
+            class="form-control" 
+            id="rol" 
+            name="rol" 
+            value="<?php echo htmlspecialchars($datosUsuario['rol']); ?>" 
+            readonly
+          >
         </div>
 
         <!-- Botón para Guardar Cambios -->
-        <button type="submit" class="btn btn-dark">
+        <button type="submit" class="btn text-white" style="background-color:rgb(233, 115, 4);">
           <i class="fas fa-save"></i> Guardar Cambios
         </button>
       </form>

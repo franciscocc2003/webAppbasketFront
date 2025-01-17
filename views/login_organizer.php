@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Baloncesto</title>
+    <title>Login Organizador</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Font -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         body {
@@ -18,10 +17,9 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
-        }
-        .btn {
-            border-radius: 30px;
-            font-size: 1.2rem;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
         }
         .btn-orange {
             background-color: #f57c00;
@@ -36,27 +34,28 @@
             display: block;
             margin: 0 auto 20px;
         }
-        h1 {
-            font-size: 2.5rem;
-            color: #f57c00;
-        }
-        p {
-            font-size: 1rem;
-            color: #333;
-        }
     </style>
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card">
             <img src="../balon.png" alt="Baloncesto" class="basketball-image">
-            <h1>Sistema de Baloncesto</h1>
-            <p>Selecciona tu acceso para continuar:</p>
-            <div class="d-grid gap-3 mt-4">
-                <a href="login_admin.php" class="btn btn-orange">Administrador</a>
-                <a href="login_organizer.php" class="btn btn-outline-warning">Organizador</a>
-                <a href="usuarios.php" class="btn btn-light">Usuario</a>
-            </div>
+            <h1>Organizador</h1>
+            <?php if (isset($_GET['error'])): ?>
+                <div class="alert alert-danger">Usuario o contraseña incorrectos</div>
+            <?php endif; ?>
+            <form action="rutas.php?route=login" method="POST">
+                <input type="hidden" name="role" value="organizer">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="text" name="email" class="form-control" placeholder="Ingrese su correo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" name="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                </div>
+                <button type="submit" class="btn btn-orange w-100">Ingresar</button>
+            </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

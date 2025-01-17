@@ -58,7 +58,7 @@ foreach ($grupos as $grupo) {
 
   <!-- Formulario: Registrar Jugador -->
   <div class="card mb-4">
-    <div class="card-header bg-warning text-dark text-center">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
         <h4>Registrar Nuevo Jugador</h4>
     </div>
     <div class="card-body p-4">
@@ -138,7 +138,7 @@ foreach ($grupos as $grupo) {
 
             <!-- Botón de Guardar -->
             <div class="mt-4 text-center">
-                <button type="submit" class="btn btn-primary btn-lg">
+                <button type="submit" class="btn btn-large text-white" style="background-color:rgb(233, 115, 4);">
                     <i class="fas fa-save"></i> Guardar Jugador
                 </button>
             </div>
@@ -148,7 +148,7 @@ foreach ($grupos as $grupo) {
 
   <!-- Lista Jugadores -->
   <div class="card">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);"">
       <strong>Jugadores Registrados</strong>
     </div>
     <div class="card-body">
@@ -261,3 +261,6 @@ foreach ($grupos as $grupo) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php
+include_once('template/footer.php');
+?>

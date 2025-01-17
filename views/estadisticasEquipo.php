@@ -32,7 +32,7 @@ include_once('template/header.php');
       </select>
     </div>
     <div class="col-md-4 d-flex align-items-end">
-      <button type="button" id="filtrar" class="btn btn-dark">
+      <button type="button" id="filtrar" class="btn text-white" style="background-color:rgb(233, 115, 4);">
         <i class="fas fa-filter"></i> Filtrar
       </button>
     </div>
@@ -64,7 +64,7 @@ include_once('template/header.php');
   </div>
 
   <div class="mt-3">
-    <a href="index.php" class="btn btn-dark">
+    <a href="home.php" class="btn text-white" style="background-color:rgb(233, 115, 4);">
       <i class="fas fa-arrow-left"></i> Regresar al Inicio
     </a>
   </div>

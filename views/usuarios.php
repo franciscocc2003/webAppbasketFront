@@ -20,7 +20,7 @@ $usuarios = json_decode($response, true);
 
 <div class="container mt-4">
   <div class="card shadow-sm">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <h3 class="mb-0">
         <i class="fas fa-users me-2"></i> Lista de Usuarios
       </h3>

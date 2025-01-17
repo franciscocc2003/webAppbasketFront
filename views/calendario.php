@@ -41,7 +41,7 @@ $juegos = json_decode($responseJuegos, true) ?? [];
 
   <!-- Formulario: Programar un Nuevo Juego -->
   <div class="card mb-4">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <strong>Programar un Nuevo Juego</strong>
     </div>
     <div class="card-body">
@@ -112,7 +112,7 @@ $juegos = json_decode($responseJuegos, true) ?? [];
             </select>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn text-white" style="background-color:rgb(233, 115, 4);">
           <i class="fas fa-save"></i> Agregar
         </button>
       </form>
@@ -121,7 +121,7 @@ $juegos = json_decode($responseJuegos, true) ?? [];
 
   <!-- Listado de Juegos -->
   <div class="card">
-  <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+  <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color:rgb(233, 115, 4);">
     <strong>Juegos Programados</strong>
     <a href="http://localhost/api/calendario/pdf/<?=$_SESSION['id_torneo']?>" 
       class="btn btn-dark" 
@@ -162,7 +162,7 @@ $juegos = json_decode($responseJuegos, true) ?? [];
           <td><?= htmlspecialchars($juego['tipo_juego']) ?></td>
           <td>
             <a href="http://localhost/interfaz/views/editarCalendario.php?idJuego=<?= htmlspecialchars($juego['id_juego']) ?>" 
-               class="btn btn-dark mt-2">
+               class="btn mt-2 text-white" style="background-color:rgb(233, 115, 4);" >
                <i class="fa-solid fa-pen-to-square"></i> Editar
             </a>
           </td>
@@ -233,3 +233,6 @@ $juegos = json_decode($responseJuegos, true) ?? [];
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php
+include_once('template/footer.php');
+?>

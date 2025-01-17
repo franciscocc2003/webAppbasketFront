@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="container mt-4">
   <div class="card shadow-sm">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white"style="background-color:rgb(233, 115, 4);">
       <h3 class="mb-0">
         <i class="fas fa-user-plus me-2"></i> Agregar Organizador
       </h3>
@@ -119,21 +119,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Tipo (Administrador u Organizador) -->
         <div class="mb-3">
-          <label for="tipo" class="form-label">Tipo de Perfil</label>
-          <select 
-            class="form-select" 
+          <input 
+            type="hidden" 
+            class="form-control" 
             id="tipo" 
             name="tipo" 
-            required
+            value="Organizador"   
           >
-            <option value="" selected disabled>-- Selecciona el tipo --</option>
-            <option value="Administrador">Administrador</option>
-            <option value="Organizador">Organizador</option>
-          </select>
+        </div>
         </div>
 
         <!-- Botón para Enviar -->
-        <button type="submit" class="btn btn-dark">
+        <button type="submit" class="btn text-white" style="background-color:rgb(233, 115, 4);">
           <i class="fas fa-save"></i> Guardar Perfil
         </button>
       </form>

@@ -32,14 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['nombre_torneo'] = $nombre_torneo;
 
     // Redirigir al inicio o a otra página
-    echo '<script>window.location.href = "index.php";</script>';
+    echo '<script>window.location.href = "home.php";</script>';
     exit;
 }
 ?>
 
 <div class="container mt-4">
   <div class="card shadow-sm">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <h3 class="mb-0">
         <i class="fas fa-trophy me-2"></i> Seleccionar Torneo
       </h3>
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select>
           </div>
           <input type="hidden" id="nombre_torneo" name="nombre_torneo" value="">
-          <button type="submit" class="btn btn-dark">
+          <button type="submit" class="btn text-white" style="background-color:rgb(233, 115, 4);">
             <i class="fas fa-check"></i> Seleccionar Torneo
           </button>
         </form>

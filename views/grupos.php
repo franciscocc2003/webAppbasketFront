@@ -32,7 +32,7 @@ if (empty($grupos)) {
 
   <!-- Formulario: Crear Grupo -->
   <div class="card mb-4">
-  <div class="card-header bg-warning text-dark text-center">
+  <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
     <strong>Crear un Nuevo Grupo</strong>
   </div>
   <div class="card-body">
@@ -69,7 +69,7 @@ if (empty($grupos)) {
       </div>
       <!-- Botón Guardar Grupo -->
       <div class="mt-4">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn text-white" style="background-color:rgb(233, 115, 4);">
           <i class="fas fa-save"></i> Guardar Grupo
         </button>
       </div>
@@ -79,7 +79,7 @@ if (empty($grupos)) {
 
   <!-- Listado de Grupos -->
   <div class="card">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <strong>Listado de Grupos</strong>
     </div>
     <div class="card-body">
@@ -88,8 +88,8 @@ if (empty($grupos)) {
       <?php else: ?>
         <table class="table table-bordered">
           <thead class="table-dark">
-            <tr>
-              <th>Nombre</th>
+            <tr class="text-center">
+              <th >Nombre</th>
               <th>Categoría</th>   
             </tr>
           </thead>
@@ -151,3 +151,6 @@ if (empty($grupos)) {
 ></script>
 </body>
 </html>
+<?php
+include_once('template/footer.php');
+?>

@@ -45,7 +45,7 @@ foreach ($grupos as $grupo) {
     </p>
 
     <div class="card mb-4">
-        <div class="card-header bg-warning text-dark">
+        <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
             <strong>Editar Juego</strong>
         </div>
         <div class="card-body">
@@ -117,7 +117,7 @@ foreach ($grupos as $grupo) {
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn text-white" style="background-color:rgb(233, 115, 4);">
                     <i class="fas fa-save"></i> Guardar Cambios
                 </button>
             </form>

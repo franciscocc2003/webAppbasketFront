@@ -5,7 +5,7 @@ include_once('template/header.php');
 
 <div class="container mt-4">
   <div class="card shadow-sm">
-    <div class="card-header bg-warning text-dark">
+    <div class="card-header text-white" style="background-color:rgb(233, 115, 4);">
       <h3 class="mb-0">
         <i class="fas fa-chart-bar me-2"></i> Estadísticas de Jugadores
       </h3>
@@ -38,7 +38,7 @@ include_once('template/header.php');
 
       <!-- Botón para volver al inicio (o a otro módulo) -->
       <div class="mt-3">
-        <a href="index.php" class="btn btn-dark">
+        <a href="home.php" class="btn text-white" style="background-color:rgb(233, 115, 4);">
           <i class="fas fa-arrow-left"></i> Regresar al Inicio
         </a>
       </div>
