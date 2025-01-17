@@ -89,11 +89,13 @@ session_start();
             <i class="fas fa-trophy"></i> Torneo
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownTorneo">
-            <li>
+          <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'Administrador'): ?>  
+          <li>
               <a class="dropdown-item" href="crearTorneo.php">
                 <i class="fa fa-plus-square"></i> Crear Torneo
               </a>
             </li>
+            <?php endif; ?>
             <li>
               <a class="dropdown-item" href="listadoTorneos.php">
                 <i class="fa-solid fa-list"></i> Listar torneos
