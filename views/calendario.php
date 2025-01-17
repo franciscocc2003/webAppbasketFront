@@ -161,7 +161,7 @@ $juegos = json_decode($responseJuegos, true) ?? [];
           <td><?= htmlspecialchars($juego['categoria']) ?></td>
           <td><?= htmlspecialchars($juego['tipo_juego']) ?></td>
           <td>
-            <a href="http://localhost/interfaz/views/editarCalendario?idJuego=<?= htmlspecialchars($juego['id_juego']) ?>" 
+            <a href="http://localhost/interfaz/views/editarCalendario.php?idJuego=<?= htmlspecialchars($juego['id_juego']) ?>" 
                class="btn btn-dark mt-2">
                <i class="fa-solid fa-pen-to-square"></i> Editar
             </a>
