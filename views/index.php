@@ -55,7 +55,7 @@
             <div class="d-grid gap-3 mt-4">
                 <a href="login_admin.php" class="btn btn-orange">Administrador</a>
                 <a href="login_organizer.php" class="btn btn-outline-warning">Organizador</a>
-                <a href="usuarios.php" class="btn btn-light">Usuario</a>
+                <a href="usuarioJugador.php" class="btn btn-light">Usuario</a>
             </div>
         </div>
     </div>
