@@ -81,16 +81,13 @@ if (empty($grupos)) {
         <table class="table table-bordered">
           <thead class="table-dark">
             <tr>
-              <th>#</th>
               <th>Nombre</th>
-              <th>Categoría</th>
-              
+              <th>Categoría</th>   
             </tr>
           </thead>
           <tbody>
             <?php foreach ($grupos as $grupo): ?>
-              <tr>
-                <td><?= htmlspecialchars($grupo['id_grupo']) ?></td>
+              <tr>         
                 <td><?= htmlspecialchars($grupo['nombre_grupo']) ?></td>
                 <td><?= htmlspecialchars($grupo['categoria']) ?></td>
               </tr>
