@@ -123,7 +123,7 @@ $juegos = json_decode($responseJuegos, true) ?? [];
   <div class="card">
   <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
     <strong>Juegos Programados</strong>
-    <a href="http://localhost/api/calendario/pdf" 
+    <a href="http://localhost/api/calendario/pdf/<?=$_SESSION['id_torneo']?>" 
       class="btn btn-dark">
       <i class="fa-solid fa-file-pdf"></i> Imprimir en pdf
     </a>
