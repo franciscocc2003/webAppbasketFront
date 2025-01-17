@@ -32,23 +32,27 @@ if (empty($grupos)) {
 
   <!-- Formulario: Crear Grupo -->
   <div class="card mb-4">
-    <div class="card-header bg-warning text-dark">
-      <strong>Crear un Nuevo Grupo</strong>
-    </div>
-    <div class="card-body">
-      <form id="formGrupo">
-        <div class="mb-3">
-          <label for="nombreGrupo" class="form-label">Nombre del Grupo</label>
+  <div class="card-header bg-warning text-dark text-center">
+    <strong>Crear un Nuevo Grupo</strong>
+  </div>
+  <div class="card-body">
+    <form id="formGrupo" class="d-flex flex-column align-items-center">
+      <div class="d-flex justify-content-center gap-3 flex-wrap" style="max-width: 500px;">
+        <!-- Campo Nombre del Grupo -->
+        <div class="form-group flex-grow-1">
+          <label for="nombreGrupo" class="form-label text-center">Nombre del Grupo</label>
           <input 
             type="text" 
             class="form-control" 
             id="nombreGrupo" 
             name="nombreGrupo" 
             required
+            placeholder="Ingrese nombre"
           >
         </div>
-        <div class="mb-3">
-          <label for="categoria" class="form-label">Categoría</label>
+        <!-- Campo Categoría -->
+        <div class="form-group flex-grow-1">
+          <label for="categoria" class="form-label text-center">Categoría</label>
           <select class="form-select" id="categoria" name="categoria" required>
             <option selected disabled>-- Selecciona --</option>
             <option value="1era Fuerza">1era Fuerza</option>
@@ -62,12 +66,16 @@ if (empty($grupos)) {
             <option value="Femenil">Femenil</option>
           </select>
         </div>
+      </div>
+      <!-- Botón Guardar Grupo -->
+      <div class="mt-4">
         <button type="submit" class="btn btn-primary">
           <i class="fas fa-save"></i> Guardar Grupo
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
+</div>
 
   <!-- Listado de Grupos -->
   <div class="card">
